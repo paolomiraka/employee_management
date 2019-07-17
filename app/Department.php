@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\User;
 
+
 class Department extends Authenticatable
 {
     use Notifiable;
@@ -17,7 +18,7 @@ class Department extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'id_parent', 'id' 
+        'name', 'id' 
     ];
 
     /**
@@ -33,4 +34,8 @@ class Department extends Authenticatable
         return $this->hasMany(User::class);
     }
 
+    public function childs()
+    {
+        return $this->hasMany(Department::class, 'parent_id', 'id');
+    }
 }

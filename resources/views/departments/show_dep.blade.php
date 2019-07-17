@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
-<div class="container" style="width:900px;">
+<div class="container" style="width:900px; margin-top:20px;">
 
     <table class="table" id="table">
         <thead>
@@ -23,13 +23,9 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <a href="/users/edit/{{$user->id}}"><button class="btn btn-info" data-info="{{$user->id}},{{$user->name}},{{$user->email}}" style="display:inline-block">
-                            Edit
-                        </button></a>
-
-                    <form action="{{ url('/users/showall/delete', ['id' => $user->id]) }}" method="post">
-                        <input class="btn btn-danger" type="submit" value="Delete" style="display:inline-block" />
-                        @method('delete')
+                    <form action="/departments/show/update/{{$user->id}}" method="post">
+                        <input class="btn btn-danger" type="submit" value="Remove" style="display:inline-block" />
+                        @method('patch')
                         @csrf
                     </form>
 

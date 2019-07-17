@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -12,14 +11,19 @@
             <strong>
                 <h2>{{ Auth::user()->name }}'s Profile</h2>
             </strong>
+            <h4>Admin</h4>
 
             <br>
             <a href="/users/showall">
                 <button class="btn btn-outline-primary btn-block btn-lg">Show users</button>
             </a>
             <br>
-            <a href="/departments/showall">
+            <a href="/departments/tree">
                 <div class="btn btn-outline-success btn-block btn-lg">Show departments</div>
+            </a>
+            <br>
+            <a href="/chat">
+                <div class="btn btn-outline-success btn-block btn-lg">Enter Chatroom</div>
             </a>
 
             @else
@@ -33,6 +37,7 @@
                     <strong>
                         <h2>{{ Auth::user()->name }}'s Profile</h2>
                     </strong>
+                    <h4>User</h4>
                     <h4>{{ Auth::user()->email }}</h4>
 
                     <form enctype="multipart/form-data" action="/home" method="POST">
@@ -43,6 +48,16 @@
                         <br><br>
                         <input type="submit" class="pull-right btn btn-sm btn-primary">
                     </form>
+                    <br>
+                    <br>
+                    <a href="/chat">
+                        <div class="btn btn-outline-success btn-block btn-lg">Enter Chatroom</div>
+                    </a>
+                    <br>
+                    <br>
+                    <a href="/users/edit_profile">
+                        <button class="btn btn-outline-success btn-block btn-lg">Edit Profile</button>
+                    </a>
 
 
                 </div>

@@ -18,40 +18,25 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+//User routes
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('home', 'HomeController@update_avatar');
 
+Route::get('/users/showall', 'UserController@showAllUsers')->middleware('adminMiddleware');
+Route::get('/users/edit/{user}', 'UserController@edit')->middleware('adminMiddleware');
+Route::patch('/users/edit/{user}/update', 'UserController@update')->middleware('adminMiddleware');
+Route::delete('users/showall/delete/{user}', 'UserController@destroy')->middleware('adminMiddleware');
 
-Route::get('/users/showall', 'UserController@showAllUsers');
-Route::get('/users/edit/{user}', 'UserController@edit');
-Route::patch('/users/edit/{user}/update', 'UserController@update');
-Route::delete('users/showall/delete/{user}', 'UserController@destroy');
-
-
-Route::get('/departments/showall', 'DepartmentController@showAllDepartments');
-// Route::get('/departments/edit/{department}', 'DepartmentController@edit');
-// Route::patch('/departments/edit/{department}/update', 'DepartmentController@update');
-
-//Chat route
-Route::get('/chat', function(){
-    return view('chat');
-})->middleware('auth');
-
-Route::get('/messages', function () {
-    return App\Message::with('user')->get();
-})->middleware('auth');
-
-Route::post('/messages', function () {
-
-    // Store the new message
-    $user = Auth::user();
-    $message = $user->messages()->create([
-        'message' => request()->get('message')
-    ]);
-    // Announce that a new message has been posted
-    broadcast(new MessagePosted($message, $user))->toOthers();
-    return ['status' => 'OK'];
-})->middleware('auth');
+Route::get('/users/edit_profile', 'UserController@edit_profile');
+Route::patch('/users/edit_profile/update', 'UserController@update_info');
 
 //Tree view routes
-Route::post('/departments/add_dep', 'DepartmentController@add_tree');
+Route::post('/departments/add_tree', 'DepartmentController@add_tree');
+
+Route::get('/departments/tree', 'DepartmentController@treeView')->name('tree');
+Route::get('/departments/show/{department}', 'DepartmentController@show_dep');
+Route::delete('/departments/show/delete', 'DepartmentController@delete');
+
+Route::patch('departments/show/update/{user_id}', 'DepartmentController@update_id_dep');
+
+//Chat Routes

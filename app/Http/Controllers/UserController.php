@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 use App\User;
+use App\Department;
 use Image;
+use Illuminate\Auth\Access\Gate;
+
+
 
 class UserController extends Controller
 {
@@ -14,7 +17,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('adminMiddleware');
     }
 
     public function index()
@@ -31,32 +33,55 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $departments = Department::all();
+        return view('users.edit', compact(['user','departments']));
+    }
+
+    public function edit_profile(User $user)
+    {
+        // if (Gate::allows('edit_profile')) {
+             //     dd("kjkkj");
+        
+        $user = User::findOrFail(auth()->id());
+         
+        return view('users.edit_profile', compact('user'));
+    }
+
+    public function update_info(User $user)
+    {
+        $attributes = request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        
+        $user->name = $attributes['name'];
+        $user->email = $attributes['email'];
+        $user->save();
+
+        return redirect('/home');
     }
 
     public function update(User $user)
     {
         $attributes = request()->validate([
             'name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'department' => 'required'
         ]);
 
         $user->name = $attributes['name'];
         $user->email = $attributes['email'];
-        //$user->password = bcrypt($attributes['password']);
-
+        $user->id_dep = $attributes['department'];
         $user->save();
-
-        return redirect('/home');
+        
+        return redirect('/users/showall');
     }
 
     public function destroy($user)
     {
-
         $user = User::find($user);
         $user->delete();
         return redirect('/users/showall');
     }
-
     
 }

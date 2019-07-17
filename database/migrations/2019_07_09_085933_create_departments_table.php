@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id');
             $table->string('name');
             //$table->string('code');
-            $table->integer('id_parent')->nullable();
+            //$table->integer('id_parent')->unsigned()->nullable();
             $table->timestamps();
         });
     }

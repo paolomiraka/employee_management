@@ -44,7 +44,7 @@ window.axios.defaults.headers.common = {
  */
 
 
-var token = $('meta[name="csrf-token"]').attr('content');
+let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
@@ -58,11 +58,12 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-import Echo from "laravel-echo"
+// import Echo from "laravel-echo"
 
-window.Echo = new Echo({
-    broadcaster: 'pusher',
-    key: '6f0bf6f5013b0ef4a97e'
-});
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: '6f0bf6f5013b0ef4a97e',
+    
+// });
 
 
