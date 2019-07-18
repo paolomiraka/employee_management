@@ -40,8 +40,7 @@ Route::delete('/departments/show/delete', 'DepartmentController@delete');
 Route::patch('departments/show/update/{user_id}', 'DepartmentController@update_id_dep');
 
 //Chat Routes
-
-
-Route::get('/messages', 'ChatsController@fetchMessages');
-Route::get('/messages', 'ChatsController@fetchMessages');
 Route::get('/chat', 'ChatsController@index');
+Route::get('/messages', 'ChatsController@fetchMessages');
+Route::post('/messages', 'ChatsController@sendMessage');
+

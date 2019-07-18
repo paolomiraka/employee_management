@@ -1,6 +1,5 @@
 import Pusher from 'pusher-js'
 window._ = require('lodash');
-import Vue from 'vue'
 //import VueResource from 'vue-resource'
 
 //Vue.use(VueResource);
@@ -65,10 +64,12 @@ import Echo from "laravel-echo"
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key: '954c6f1772af4a930c00',
+    key: '973cca0ca7e49b32b079',
     cluster: 'eu',
     encrypted: 'true'
     
 });
+
+
 
 

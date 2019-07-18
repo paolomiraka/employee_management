@@ -59657,12 +59657,9 @@ new Vue({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
 /* harmony import */ var pusher_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pusher_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 
-window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
- //import VueResource from 'vue-resource'
+window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"); //import VueResource from 'vue-resource'
 //Vue.use(VueResource);
 // Vue.http.interceptors.push((request, next) => {
 //     request.headers.set('X-CSRF-TOKEN', CoolApp.csrfToken);
@@ -59719,9 +59716,9 @@ if (token) {
 
 
 
-window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_2__["default"]({
+window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__["default"]({
   broadcaster: 'pusher',
-  key: '954c6f1772af4a930c00',
+  key: '973cca0ca7e49b32b079',
   cluster: 'eu',
   encrypted: 'true'
 });

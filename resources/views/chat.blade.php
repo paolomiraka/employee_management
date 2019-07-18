@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="container">
+<div id="app">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default" id="app">
+            <div class="panel panel-default">
                 <div class="panel-heading">Chats</div>
 
                 <div class="panel-body">

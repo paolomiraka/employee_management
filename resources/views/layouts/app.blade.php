@@ -11,8 +11,7 @@
 
     <title>{{ config('app.name', 'Kreatx Project') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -59,6 +58,15 @@
             background-color: #555;
         }
     </style>
+
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+                'csrfToken' => csrf_token(),
+                'pusherKey' => config('broadcasting.connections.pusher.key'),
+                'pusherCluster' => config('broadcasting.connections.pusher.options.cluster')
+            ]) !!};
+    </script>
 
 </head>
 
@@ -118,6 +126,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>
