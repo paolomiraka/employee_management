@@ -28,7 +28,7 @@ Route::patch('/users/edit/{user}/update', 'UserController@update')->middleware('
 Route::delete('users/showall/delete/{user}', 'UserController@destroy')->middleware('adminMiddleware');
 
 Route::get('/users/edit_profile', 'UserController@edit_profile');
-Route::patch('/users/edit_profile/update', 'UserController@update_info');
+Route::patch('/users/edit_profile/update/{user_id}', 'UserController@update_info');
 
 //Tree view routes
 Route::post('/departments/add_tree', 'DepartmentController@add_tree');
@@ -40,3 +40,8 @@ Route::delete('/departments/show/delete', 'DepartmentController@delete');
 Route::patch('departments/show/update/{user_id}', 'DepartmentController@update_id_dep');
 
 //Chat Routes
+
+
+Route::get('/messages', 'ChatsController@fetchMessages');
+Route::get('/messages', 'ChatsController@fetchMessages');
+Route::get('/chat', 'ChatsController@index');

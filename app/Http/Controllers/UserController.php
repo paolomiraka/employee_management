@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Department;
-use Image;
-use Illuminate\Auth\Access\Gate;
-
 
 
 class UserController extends Controller
@@ -34,26 +29,25 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $departments = Department::all();
-        return view('users.edit', compact(['user','departments']));
+        return view('users.edit', compact(['user', 'departments']));
     }
 
     public function edit_profile(User $user)
     {
-        // if (Gate::allows('edit_profile')) {
-             //     dd("kjkkj");
-        
         $user = User::findOrFail(auth()->id());
-         
+        //dd($user);
         return view('users.edit_profile', compact('user'));
     }
 
-    public function update_info(User $user)
+    public function update_info($user_id)
     {
+        //dd($user_id);
+        $user = User::where('id', $user_id)->get()[0];
         $attributes = request()->validate([
             'name' => 'required',
             'email' => 'required',
         ]);
-        
+
         $user->name = $attributes['name'];
         $user->email = $attributes['email'];
         $user->save();
@@ -73,7 +67,7 @@ class UserController extends Controller
         $user->email = $attributes['email'];
         $user->id_dep = $attributes['department'];
         $user->save();
-        
+
         return redirect('/users/showall');
     }
 
@@ -83,5 +77,4 @@ class UserController extends Controller
         $user->delete();
         return redirect('/users/showall');
     }
-    
 }

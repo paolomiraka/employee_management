@@ -3,7 +3,7 @@
 
 <div class="container">
     <div class=" row justify-content-center">
-        <form method="post" action="/users/edit_profile/update">
+        <form method="post" action="/users/edit_profile/update/{{$user->id}}">
 
             {{ csrf_field() }}
             {{ method_field('patch') }}

@@ -50,7 +50,7 @@
                     </form>
                     <br>
                     <br>
-                    <a href="/chat">
+                    <a href="/messages">
                         <div class="btn btn-outline-success btn-block btn-lg">Enter Chatroom</div>
                     </a>
                     <br>

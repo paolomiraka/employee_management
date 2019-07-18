@@ -1,23 +1,23 @@
+@extends('layouts.app')
 
+@section('content')
 
-<!DOCTYPE html>
-<html>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default" id="app">
+                <div class="panel-heading">Chats</div>
 
-<head>
-    <meta charset="utf-8">
-    <title>Chatroom</title>
-
-    <link rel="stylesheet" href="css/app.css">
-</head>
-
-<body>
-    <div id="app">
-        <h1 style="text-align: center;">Chatroom</h1>
-        <chat-log :messages="messages"></chat-log>
-        <chat-composer v-on:messagesent="addMessage"></chat-composer>
+                <div class="panel-body">
+                    <chat-messages :messages="messages"></chat-messages>
+                </div>
+                <div class="panel-footer">
+                    <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="js/app.js" charset="utf-8"></script>
-</body>
+</div>
 
-</html>
 
+@endsection

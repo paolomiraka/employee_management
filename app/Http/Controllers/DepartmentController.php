@@ -27,7 +27,7 @@ class DepartmentController extends Controller
 
         DB::table('users')->where('id', $user_id)->update(['id_dep' => null]);
 
-        return redirect('/departments/show/{department}');
+        return redirect('/departments/tree');
     }
 
 
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
         $department = Department::where('id', $dep_id)->get()[0];
 
         $users = User::where('id_dep', $dep_id)->get();
-        //dd($users);
+        
         return view('departments.show_dep', compact(['department', 'users']));
     }
 
@@ -64,7 +64,8 @@ class DepartmentController extends Controller
         //dd($department);
         $users = User::where('id_dep', $dep_id)->get();
 
-        if ($users->isEmpty()) {
+        if ($users->isEmpty()) 
+        {
             $department->delete();
         }
         return redirect()->route('tree')->with('message', 'Success');
@@ -72,17 +73,18 @@ class DepartmentController extends Controller
 
     public function treeView()
     {
-        $departments = Department::where('parent_id',0)->get();
+        $departments_tree = Department::where('parent_id', 0)->get();
+        $departments = Department::all();
         $tree = '<ul id="browser" class="filetree"><li class="tree-view"></li>';
-        foreach ($departments as $department) {
-            $tree .= '<li class="tree-view closed"><a href="/departments/show/' . $department->id . '" class="tree-name">' . $department->name . '</a>';
-            if (count($department->childs)) {
-                $tree .= $this->childView($department);
+        foreach ($departments_tree as $department_tree) {
+            $tree .= '<li class="tree-view closed"><a href="/departments/show/' . $department_tree->id . '" class="tree-name">' . $department_tree->name . '</a>';
+            if (count($department_tree->childs)) {
+                $tree .= $this->childView($department_tree);
             }
         }
         $tree .= '<ul>';
 
-        return view('departments.deptree', compact(['departments', 'tree']));
+        return view('departments.deptree', compact([ 'tree', 'departments']));
     }
     public function childView($department)
     {
@@ -103,6 +105,7 @@ class DepartmentController extends Controller
 
     public function add_tree()
     {
+
         $attributes = request()->validate([
             'parent_department' => 'required',
             'child_department' => 'required'

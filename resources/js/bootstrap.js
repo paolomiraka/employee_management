@@ -1,10 +1,14 @@
 import Pusher from 'pusher-js'
 window._ = require('lodash');
+import Vue from 'vue'
+//import VueResource from 'vue-resource'
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', CoolApp.csrfToken);
-    next();
-});
+//Vue.use(VueResource);
+
+// Vue.http.interceptors.push((request, next) => {
+//     request.headers.set('X-CSRF-TOKEN', CoolApp.csrfToken);
+//     next();
+// });
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -18,11 +22,11 @@ try {
 
     require('bootstrap');
 } catch (e) {}
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
+// $.ajaxSetup({
+//     headers: {
+//         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//     }
+// });
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -30,7 +34,6 @@ $.ajaxSetup({
  */
 
 window.axios = require('axios');
-
 
 window.axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -58,12 +61,14 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from "laravel-echo"
+import Echo from "laravel-echo"
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: '6f0bf6f5013b0ef4a97e',
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '954c6f1772af4a930c00',
+    cluster: 'eu',
+    encrypted: 'true'
     
-// });
+});
 
 
