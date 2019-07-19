@@ -1,12 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="application/javascript"></script>
 <link href="http://www.expertphp.in/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="http://demo.expertphp.in/css/jquery.treeview.css" />
-<script src="http://demo.expertphp.in/js/jquery.js"></script>
-<script src="http://demo.expertphp.in/js/jquery-treeview.js"></script>
-<script type="text/javascript" src="http://demo.expertphp.in/js/demo.js"></script>
+<script src="http://demo.expertphp.in/js/jquery.js" type="application/javascript"></script>
+
+<script src="http://demo.expertphp.in/js/jquery-treeview.js" type="application/javascript"></script>
+<script type="application/javascript" src="http://demo.expertphp.in/js/demo.js"></script>
+
+
 
 <div class="container" style="width:900px; padding-top:20px;">
 
@@ -65,6 +68,7 @@
     </div>
   </div>
 </div>
+
 
 
 @endsection

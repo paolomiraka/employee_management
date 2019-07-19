@@ -38,4 +38,6 @@ class Department extends Authenticatable
     {
         return $this->hasMany(Department::class, 'parent_id', 'id');
     }
+
+
 }

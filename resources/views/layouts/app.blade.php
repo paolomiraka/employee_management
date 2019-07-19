@@ -12,7 +12,6 @@
     <title>{{ config('app.name', 'Kreatx Project') }}</title>
 
 
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,14 +22,14 @@
     <style>
         .chat {
             list-style: none;
-            margin: 0;
+            margin-left: 80px;
             padding: 0;
         }
 
         .chat li {
             margin-bottom: 10px;
             padding-bottom: 5px;
-            border-bottom: 1px dotted #B3A9A9;
+            border-bottom: 1px dotted #b3a9a9;
         }
 
         .chat li .chat-body p {
@@ -59,9 +58,16 @@
         }
     </style>
 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <link href="http://www.expertphp.in/css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="http://demo.expertphp.in/css/jquery.treeview.css" /> 
+    <script src="http://demo.expertphp.in/js/jquery.js"></script>
+    <script src="http://demo.expertphp.in/js/jquery-treeview.js"></script>
+    <!-- <script type="text/javascript" src="http://demo.expertphp.in/js/demo.js"></script>
+
     <!-- Scripts -->
     <script>
-        window.Laravel = {!! json_encode([
+        window.Laravel = {!!json_encode([
                 'csrfToken' => csrf_token(),
                 'pusherKey' => config('broadcasting.connections.pusher.key'),
                 'pusherCluster' => config('broadcasting.connections.pusher.options.cluster')

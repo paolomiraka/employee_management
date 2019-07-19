@@ -50,9 +50,8 @@ class DepartmentController extends Controller
     {
 
         $department = Department::where('id', $dep_id)->get()[0];
-
         $users = User::where('id_dep', $dep_id)->get();
-        
+
         return view('departments.show_dep', compact(['department', 'users']));
     }
 
@@ -64,8 +63,7 @@ class DepartmentController extends Controller
         //dd($department);
         $users = User::where('id_dep', $dep_id)->get();
 
-        if ($users->isEmpty()) 
-        {
+        if ($users->isEmpty()) {
             $department->delete();
         }
         return redirect()->route('tree')->with('message', 'Success');
@@ -84,7 +82,7 @@ class DepartmentController extends Controller
         }
         $tree .= '<ul>';
 
-        return view('departments.deptree', compact([ 'tree', 'departments']));
+        return view('departments.deptree', compact(['tree', 'departments']));
     }
     public function childView($department)
     {
