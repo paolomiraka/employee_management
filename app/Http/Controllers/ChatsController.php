@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Message;
 use app\events\MessageSent;
+use Alert;
 
 
 class ChatsController extends Controller
 {
     public function index()
     {
+       
         return view('chat');
     }
 

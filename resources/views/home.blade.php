@@ -8,8 +8,9 @@
 
             @if(Auth::user()->isAdmin == 1)
 
+            <br><br>
             <strong>
-                <h2>{{ Auth::user()->name }}'s Profile</h2>
+                <h2>{{ Auth::user()->name }}</h2>
             </strong>
             <h4>Admin</h4>
 
@@ -35,7 +36,7 @@
                 <div class="col-lg-8">
                     <br>
                     <strong>
-                        <h2>{{ Auth::user()->name }}'s Profile</h2>
+                        <h2>{{ Auth::user()->name }}</h2>
                     </strong>
                     <h4>User</h4>
                     <h4>{{ Auth::user()->email }}</h4>

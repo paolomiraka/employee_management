@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDepartmentsTable extends Migration
+class AddColumnDepCode extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            //$table->integer('id_parent')->unsigned()->nullable();
-            $table->timestamps();
+        Schema::table('departments', function ($table) {
+            $table->text('code')->after('name');
         });
     }
 
@@ -28,6 +25,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        
     }
 }

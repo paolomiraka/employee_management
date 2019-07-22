@@ -60,18 +60,24 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- <link href="http://www.expertphp.in/css/bootstrap.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="http://demo.expertphp.in/css/jquery.treeview.css" /> 
+    <link rel="stylesheet" href="http://demo.expertphp.in/css/jquery.treeview.css" />
     <script src="http://demo.expertphp.in/js/jquery.js"></script>
     <script src="http://demo.expertphp.in/js/jquery-treeview.js"></script>
-    <!-- <script type="text/javascript" src="http://demo.expertphp.in/js/demo.js"></script>
+    <!-- <script type="text/javascript" src="http://demo.expertphp.in/js/demo.js"></script> -->
 
     <!-- Scripts -->
+    <script src="js/sweetalert.min.js"></script>
+
+    <!-- Include this after the sweet alert js file -->
+    @include('sweet::alert')
     <script>
-        window.Laravel = {!!json_encode([
+        window.Laravel = {
+            !!json_encode([
                 'csrfToken' => csrf_token(),
                 'pusherKey' => config('broadcasting.connections.pusher.key'),
                 'pusherCluster' => config('broadcasting.connections.pusher.options.cluster')
-            ]) !!};
+            ]) !!
+        };
     </script>
 
 </head>

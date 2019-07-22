@@ -9,7 +9,7 @@
     <table class="table" id="table">
         <thead>
             <tr>
-                <th class="text-center">#</th>
+                <th class="text-center">User ID</th>
                 <th class="text-center">Name</th>
                 <th class="text-center">Email</th>
                 <th class="text-center">Actions</th>

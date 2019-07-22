@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Department;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 class DepartmentController extends Controller
 {
@@ -41,6 +42,7 @@ class DepartmentController extends Controller
         $user->name = $attributes['name'];
         $user->email = $attributes['email'];
         $user->save();
+        
 
         return redirect('/home');
     }
@@ -65,8 +67,10 @@ class DepartmentController extends Controller
 
         if ($users->isEmpty()) {
             $department->delete();
+            alert()->success('Done!', 'Good bye!');
         }
-        return redirect()->route('tree')->with('message', 'Success');
+        alert()->error('Department not empty');
+        return redirect()->route('tree');
     }
 
     public function treeView()
@@ -75,7 +79,7 @@ class DepartmentController extends Controller
         $departments = Department::all();
         $tree = '<ul id="browser" class="filetree"><li class="tree-view"></li>';
         foreach ($departments_tree as $department_tree) {
-            $tree .= '<li class="tree-view closed"><a href="/departments/show/' . $department_tree->id . '" class="tree-name">' . $department_tree->name . '</a>';
+            $tree .= '<li class="tree-view "><a href="/departments/show/' . $department_tree->id . '" class="tree-name">' . $department_tree->name . '</a>';
             if (count($department_tree->childs)) {
                 $tree .= $this->childView($department_tree);
             }
@@ -115,5 +119,11 @@ class DepartmentController extends Controller
         $new_dep->save();
 
         return redirect()->route('tree');
+    }
+
+    public function code_view($dep_code)
+    {
+        $department = Department::where('code', $dep_code)->get()[0];
+
     }
 }
